@@ -1423,15 +1423,20 @@ public class MonitorFrame extends javax.swing.JFrame {
 
     private void btnFixarTecnologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFixarTecnologiaActionPerformed
 
+        //tecnologiaDefinida recebe o código
         String tecnologiaDefinida = null;
 
+        //tecnologia recebe a strng defini no listbox
         String tecnologia = this.comboFixarTecnologia.getSelectedItem().toString();
 
+        //Retorna o código referente à tecnologia definida
         tecnologiaDefinida = this.tecnologiaSerFixada(tecnologia, tecnologiaDefinida);
 
+        //Se a conexão TCP for verdadeira então entrará no if
         if (conexaoTCP) {
 
             try {
+                //tecnologiaDefinida será o codgo obtido
                 byte[] resp = socketClient.enviarComando(tecnologiaDefinida, carregaTimeout());
 
                 if (resp.length > 0) {
@@ -1999,6 +2004,7 @@ public String toHex(String arg) {
 
     private int carregaTimeout() throws NumberFormatException {
 
+        //Timer irá receber o valor definido na textbox timeuot (seconds)
         String timer = textFieldTimeout.getText();
 
         if (!timer.equals("") && !timer.equals(null)) {

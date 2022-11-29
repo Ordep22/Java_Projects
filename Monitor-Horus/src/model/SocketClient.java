@@ -91,6 +91,8 @@ public class SocketClient {
     }
 
     public byte [] enviarComando(String comando, int delay) throws InterruptedException, IOException {
+        //Comando recebido resá o código da tecnologia obtido no MonitorFrame.java
+        //Delay será o tempo em segundos determinado na texbox obtido no MonitorFrame.java
 
         int tamanhoBuffer;
         byte[] buffer = new byte[10000];
@@ -100,8 +102,10 @@ public class SocketClient {
         byte[] resposta = null;
 
         int time = delay;
+        //Escreve o código da tecnologia a ser definida
         outToServer.write(hexStringToByteArray(comando));
 
+        //Talvez seja necssário alterar essa time
         Thread.sleep(1000);
 
         while (time > 0) {
